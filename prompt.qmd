@@ -1,0 +1,49 @@
+---
+title: "ISM6225 Fall24 Assignment 2"
+author: "Mauricio Bermudez"
+date: "April 4th 2025"
+format: docx
+editor: visual
+---
+
+# Question 1 
+
+**Me:** I am looking to review a way to check if I am missing a number in my counting array. Here is the code I currently have. Would this be correct?
+
+```{c#}
+int[] tempArray = new int[nums.Length]; 
+for (int i = 0; i < nums.Length; i++) 
+    { 
+        if (nums[i] > 0 && nums[i] <= nums.Length) 
+        { 
+            tempArray[nums[i] - 1] = 1; 
+            } 
+    }
+```
+
+
+**Copilot:** Your code snippet is a good start for identifying missing numbers in an array. However, it currently only marks the presence of numbers in the tempArray but does not return the missing numbers. To complete the functionality, you need to iterate through the tempArray and collect the indices where the value is still 0 (indicating the missing numbers). Here’s how you can modify your code to achieve this:
+
+```{c#}
+int[] tempArray = new int[nums.Length];
+for (int i = 0; i < nums.Length; i++)
+{
+    if (nums[i] > 0 && nums[i] <= nums.Length)
+    {
+        tempArray[nums[i] - 1] = 1;
+    }
+}
+
+List<int> missingNumbers = new List<int>();
+for (int i = 0; i < nums.Length; i++)
+{
+    if (tempArray[i] == 0)
+    {
+        missingNumbers.Add(i + 1);
+    }
+}
+
+return missingNumbers;
+```
+
+# Question 2

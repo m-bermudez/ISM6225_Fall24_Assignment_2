@@ -62,8 +62,23 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new List<int>(); // Placeholder
+                int[] tempArray = new int[nums.Length];
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (nums[i] > 0 && nums[i] <= tempArray.Length)
+                    {
+                        tempArray[nums[i] - 1] = 1;
+                    }
+                }
+                List<int> missingNumbers = new List<int>();
+                for (int i = 0; i < tempArray.Length; i++)
+                {
+                    if (tempArray[i] == 0)
+                    {
+                        missingNumbers.Add(i + 1);
+                    }
+                }
+                return missingNumbers;
             }
             catch (Exception)
             {
