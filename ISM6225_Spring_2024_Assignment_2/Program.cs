@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 
 namespace Assignment_2
 {
@@ -7,24 +9,24 @@ namespace Assignment_2
     {
         static void Main(string[] args)
         {
-            // Question 1: Find Missing Numbers in Array
-            Console.WriteLine("Question 1:");
-            int[] nums1 = { 4, 3, 2, 7, 8, 2, 3, 1 };
-            IList<int> missingNumbers = FindMissingNumbers(nums1);
-            Console.WriteLine(string.Join(",", missingNumbers));
+            // // Question 1: Find Missing Numbers in Array
+            // Console.WriteLine("Question 1:");
+            // int[] nums1 = { 4, 3, 2, 7, 8, 2, 3, 1 };
+            // IList<int> missingNumbers = FindMissingNumbers(nums1);
+            // Console.WriteLine(string.Join(",", missingNumbers));
 
-            // Question 2: Sort Array by Parity
-            Console.WriteLine("Question 2:");
-            int[] nums2 = { 3, 1, 2, 4 };
-            int[] sortedArray = SortArrayByParity(nums2);
-            Console.WriteLine(string.Join(",", sortedArray));
+            // // Question 2: Sort Array by Parity
+            // Console.WriteLine("Question 2:");
+            // int[] nums2 = { 3, 1, 2, 4 };
+            // int[] sortedArray = SortArrayByParity(nums2);
+            // Console.WriteLine(string.Join(",", sortedArray));
 
-            // Question 3: Two Sum
-            Console.WriteLine("Question 3:");
-            int[] nums3 = { 2, 7, 11, 15 };
-            int target = 9;
-            int[] indices = TwoSum(nums3, target);
-            Console.WriteLine(string.Join(",", indices));
+            // // Question 3: Two Sum
+            // Console.WriteLine("Question 3:");
+            // int[] nums3 = { 2, 7, 11, 15 };
+            // int target = 9;
+            // int[] indices = TwoSum(nums3, target);
+            // Console.WriteLine(string.Join(",", indices));
 
             // Question 4: Find Maximum Product of Three Numbers
             Console.WriteLine("Question 4:");
@@ -32,29 +34,29 @@ namespace Assignment_2
             int maxProduct = MaximumProduct(nums4);
             Console.WriteLine(maxProduct);
 
-            // Question 5: Decimal to Binary Conversion
-            Console.WriteLine("Question 5:");
-            int decimalNumber = 42;
-            string binary = DecimalToBinary(decimalNumber);
-            Console.WriteLine(binary);
+            // // Question 5: Decimal to Binary Conversion
+            // Console.WriteLine("Question 5:");
+            // int decimalNumber = 42;
+            // string binary = DecimalToBinary(decimalNumber);
+            // Console.WriteLine(binary);
 
-            // Question 6: Find Minimum in Rotated Sorted Array
-            Console.WriteLine("Question 6:");
-            int[] nums5 = { 3, 4, 5, 1, 2 };
-            int minElement = FindMin(nums5);
-            Console.WriteLine(minElement);
+            // // Question 6: Find Minimum in Rotated Sorted Array
+            // Console.WriteLine("Question 6:");
+            // int[] nums5 = { 3, 4, 5, 1, 2 };
+            // int minElement = FindMin(nums5);
+            // Console.WriteLine(minElement);
 
-            // Question 7: Palindrome Number
-            Console.WriteLine("Question 7:");
-            int palindromeNumber = 121;
-            bool isPalindrome = IsPalindrome(palindromeNumber);
-            Console.WriteLine(isPalindrome);
+            // // Question 7: Palindrome Number
+            // Console.WriteLine("Question 7:");
+            // int palindromeNumber = 121;
+            // bool isPalindrome = IsPalindrome(palindromeNumber);
+            // Console.WriteLine(isPalindrome);
 
-            // Question 8: Fibonacci Number
-            Console.WriteLine("Question 8:");
-            int n = 4;
-            int fibonacciNumber = Fibonacci(n);
-            Console.WriteLine(fibonacciNumber);
+            // // Question 8: Fibonacci Number
+            // Console.WriteLine("Question 8:");
+            // int n = 4;
+            // int fibonacciNumber = Fibonacci(n);
+            // Console.WriteLine(fibonacciNumber);
         }
 
         // Question 1: Find Missing Numbers in Array
@@ -91,8 +93,23 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                List<int> evenIndex = new List<int>();
+                List<int> oddIndex = new List<int>();
+
+                // Separate numbers into even and odd lists
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (nums[i] % 2 == 0)
+                    {
+                        evenIndex.Add(nums[i]);
+                    }
+                    else
+                    {
+                        oddIndex.Add(nums[i]);
+                    }
+                }
+                // Combine even and odd lists
+                return evenIndex.Concat(oddIndex).ToArray();
             }
             catch (Exception)
             {
@@ -105,8 +122,23 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                int x;
+                int y;
+                List<int> result= new List <int>();
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    for (int j = i + 1; j < nums.Length; j++)
+                    {
+                        if (nums[i] + nums[j] == target)
+                        {
+                            x = i;
+                            y = j;
+                            result.Add(x);
+                            result.Add(y);
+                        }
+                    }
+                }
+                return result.ToArray();
             }
             catch (Exception)
             {
@@ -119,8 +151,20 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                int x,y,z;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    for (int j = 0; j < nums.Length; j++)
+                    {
+                        for (int k = 0; k < nums.Length; k++)
+                        {
+                            if (i != j && i != k && j != k)
+                            {
+                                if()
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception)
             {
