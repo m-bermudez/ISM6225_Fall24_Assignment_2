@@ -28,11 +28,11 @@ namespace Assignment_2
             // int[] indices = TwoSum(nums3, target);
             // Console.WriteLine(string.Join(",", indices));
 
-            // Question 4: Find Maximum Product of Three Numbers
-            Console.WriteLine("Question 4:");
-            int[] nums4 = { 1, 2, 3, 4 };
-            int maxProduct = MaximumProduct(nums4);
-            Console.WriteLine(maxProduct);
+            // // Question 4: Find Maximum Product of Three Numbers
+            // Console.WriteLine("Question 4:");
+            // int[] nums4 = { 1, 2, 3, 4 };
+            // int maxProduct = MaximumProduct(nums4);
+            // Console.WriteLine(maxProduct);
 
             // // Question 5: Decimal to Binary Conversion
             // Console.WriteLine("Question 5:");
@@ -52,11 +52,11 @@ namespace Assignment_2
             // bool isPalindrome = IsPalindrome(palindromeNumber);
             // Console.WriteLine(isPalindrome);
 
-            // // Question 8: Fibonacci Number
-            // Console.WriteLine("Question 8:");
-            // int n = 4;
-            // int fibonacciNumber = Fibonacci(n);
-            // Console.WriteLine(fibonacciNumber);
+            // Question 8: Fibonacci Number
+            Console.WriteLine("Question 8:");
+            int n = 4;
+            int fibonacciNumber = Fibonacci(n);
+            Console.WriteLine(fibonacciNumber);
         }
 
         // Question 1: Find Missing Numbers in Array
@@ -151,20 +151,32 @@ namespace Assignment_2
         {
             try
             {
-                int x,y,z;
-                for (int i = 0; i < nums.Length; i++)
+                if (nums.Length < 3)
                 {
-                    for (int j = 0; j < nums.Length; j++)
+                    throw new ArgumentException("Array must contain at least three elements.");
+                }
+            
+                // Initialize the three largest numbers
+                int max1 = int.MinValue, max2 = int.MinValue, max3 = int.MinValue;
+                foreach (int num in nums)
+                {
+                    if (num > max1)
                     {
-                        for (int k = 0; k < nums.Length; k++)
-                        {
-                            if (i != j && i != k && j != k)
-                            {
-                                if()
-                            }
-                        }
+                        max3 = max2;
+                        max2 = max1;
+                        max1 = num;
+                    }
+                    else if (num > max2)
+                    {
+                        max3 = max2;
+                        max2 = num;
+                    }
+                    else if (num > max3)
+                    {
+                        max3 = num;
                     }
                 }
+                return max1 * max2 * max3;
             }
             catch (Exception)
             {
@@ -177,8 +189,12 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return "101010"; // Placeholder
+                if (decimalNumber < 0)
+                {
+                    throw new ArgumentException("Decimal number must be non-negative.");
+                }
+                string binary = Convert.ToString(decimalNumber, 2);
+                return binary;
             }
             catch (Exception)
             {
@@ -191,8 +207,15 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                int minimum = nums[0];
+                foreach (int num in nums)
+                {
+                    if (num < minimum)
+                    {
+                        minimum = num;
+                    }
+                }
+                return minimum;
             }
             catch (Exception)
             {
@@ -205,8 +228,18 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return false; // Placeholder
+                string str = x.ToString();
+                char[] charArray = str.ToCharArray();
+                char[] reversedArray = charArray.Reverse().ToArray();
+
+                if (charArray[0] == reversedArray[0])
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {

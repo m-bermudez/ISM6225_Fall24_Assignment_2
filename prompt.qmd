@@ -83,4 +83,86 @@ for (int i = 0; i < nums.Length; i++)
 return evenIndex.Concat(oddIndex).ToArray();
 ```
 
-# Question 
+# Question 4:
+
+**Me:** Would you be able to review my code? I'm trying to iterate through the loop and get the 3 maximum product values and then return the product itself. Below is the code I wrote but I seem to be receiving an error of unusued variables. Am I on the right path? My thought process is start at the end of the array, and compare that index to the one before it. If the value is higher, it assigns to variable. If not, it'll step to the next lowest index. These loops are repeated until we find the 3 highest values and then return the multiplied value.
+
+```{c#}
+int x,y,z;
+for (int i = -1; i >= 0; i--)
+{
+    if (nums[i] > nums[i - 1])
+    {
+        x = nums[i];
+        for (int j = -1; j >= 0; j--)
+        {
+            if (nums[j] > nums[j - 1] && nums[j] != x)
+            {
+                y = nums[j];
+                for (int k = -1; k >= 0; k--)
+                {
+                    if (nums[k] > nums[k - 1] && nums[k] != x && nums[k] != y)
+                    {
+                        z = nums[k];
+                    }
+                }
+            }
+        }
+    }
+}
+return x * y * z;
+```
+
+**Copilot:** Your code has several issues that need to be addressed:
+
+Issues:
+Negative Indexing: In C#, arrays do not support negative indexing. Using nums[-1] or iterating with i = -1 will throw an IndexOutOfRangeException.
+Uninitialized Variables: The variables x, y, and z are declared but not initialized. If the conditions in the loops are never met, they will remain uninitialized, causing a compilation error when used in return x * y * z.
+Inefficient Logic: The nested loops are unnecessarily complex for finding the three largest numbers in an array. This can be simplified significantly.
+Edge Cases: The code does not handle cases where the array has fewer than three elements.
+Corrected Approach:
+To find the three largest numbers in an array and return their product, you can use a more efficient approach:
+
+Sort the array in descending order and pick the first three elements.
+Alternatively, iterate through the array once to find the three largest numbers.
+Here’s the corrected code:
+```{c#}
+int FindMaxProduct(int[] nums)
+{
+    if (nums.Length < 3)
+    {
+        throw new ArgumentException("Array must contain at least three elements.");
+    }
+
+    // Initialize the three largest numbers
+    int max1 = int.MinValue, max2 = int.MinValue, max3 = int.MinValue;
+
+    foreach (int num in nums)
+    {
+        if (num > max1)
+        {
+            max3 = max2;
+            max2 = max1;
+            max1 = num;
+        }
+        else if (num > max2)
+        {
+            max3 = max2;
+            max2 = num;
+        }
+        else if (num > max3)
+        {
+            max3 = num;
+        }
+    }
+
+    return max1 * max2 * max3;
+}
+```
+
+Explanation:
+Edge Case Handling: The function checks if the array has fewer than three elements and throws an exception if true.
+Efficient Iteration: The array is traversed once (O(n) complexity) to find the three largest numbers.
+Variable Updates: The variables max1, max2, and max3 are updated dynamically as larger numbers are found.
+
+# Question :
