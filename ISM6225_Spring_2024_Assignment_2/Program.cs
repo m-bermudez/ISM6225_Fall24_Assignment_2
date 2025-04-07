@@ -64,6 +64,10 @@ namespace Assignment_2
         {
             try
             {
+                if (nums.Length < 2 || nums == null || nums.Length == 0)
+                {
+                    throw new ArgumentException("Array must contain at least two elements and array cannot be null or empty.");
+                }
                 int[] tempArray = new int[nums.Length];
                 for (int i = 0; i < nums.Length; i++)
                 {
@@ -93,10 +97,12 @@ namespace Assignment_2
         {
             try
             {
+                if (nums.Length < 2 || nums == null || nums.Length == 0)
+                {
+                    throw new ArgumentException("Array must contain at least two elements and array cannot be null or empty.");
+                }
                 List<int> evenIndex = new List<int>();
                 List<int> oddIndex = new List<int>();
-
-                // Separate numbers into even and odd lists
                 for (int i = 0; i < nums.Length; i++)
                 {
                     if (nums[i] % 2 == 0)
@@ -122,6 +128,10 @@ namespace Assignment_2
         {
             try
             {
+                if (nums.Length < 2 || nums == null || nums.Length == 0 || target < 0)
+                {
+                    throw new ArgumentException("Array must contain at least two elements, target must be non-negative, array cannot be null or empty.");
+                }
                 int x;
                 int y;
                 List<int> result= new List <int>();
@@ -189,7 +199,7 @@ namespace Assignment_2
         {
             try
             {
-                if (decimalNumber < 0)
+                if (decimalNumber < 0) 
                 {
                     throw new ArgumentException("Decimal number must be non-negative.");
                 }
@@ -207,6 +217,10 @@ namespace Assignment_2
         {
             try
             {
+                if (nums.Length < 1 || nums == null || nums.Length == 0)
+                {
+                    throw new ArgumentException("Array must contain at least one element and array cannot be null or empty.");
+                }
                 int minimum = nums[0];
                 foreach (int num in nums)
                 {
@@ -252,7 +266,15 @@ namespace Assignment_2
         {
             try
             {
-                if(n <= 2)
+                if (n < 0)
+                {
+                    throw new ArgumentException("Input must be a non-negative integer.");
+                }
+                else if (n == 0)
+                {
+                    return 0;
+                }
+                else if(n <= 2)
                 {
                     return 1;
                 }

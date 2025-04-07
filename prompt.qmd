@@ -164,5 +164,3 @@ Explanation:
 Edge Case Handling: The function checks if the array has fewer than three elements and throws an exception if true.
 Efficient Iteration: The array is traversed once (O(n) complexity) to find the three largest numbers.
 Variable Updates: The variables max1, max2, and max3 are updated dynamically as larger numbers are found.
-
-# Question :
