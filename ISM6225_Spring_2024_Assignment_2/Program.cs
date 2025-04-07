@@ -165,8 +165,6 @@ namespace Assignment_2
                 {
                     throw new ArgumentException("Array must contain at least three elements.");
                 }
-            
-                // Initialize the three largest numbers
                 int max1 = int.MinValue, max2 = int.MinValue, max3 = int.MinValue;
                 foreach (int num in nums)
                 {
